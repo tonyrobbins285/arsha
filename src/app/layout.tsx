@@ -1,6 +1,12 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
+import Header from "@/components/header";
+import Footer from "@/components/footer";
+import Overlay from "@/components/overlay";
+import NavbarMobile from "@/components/navbar-mobile";
+import NavbarMobileBtn from "@/components/navbar-mobile-btn";
+import ScrollUp from "@/components/scroll-up";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -16,7 +22,16 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={`${inter.className} min-h-screen`}>
+        <Overlay />
+        {/* Mobile Navbar */}
+        <NavbarMobile />
+        {/* Scroll up  */}
+        <ScrollUp />
+        <Header />
+        {children}
+        <Footer />
+      </body>
     </html>
   );
 }
