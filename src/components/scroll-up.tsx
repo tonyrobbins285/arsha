@@ -5,16 +5,16 @@ import { ArrowUp } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 
 export default function ScrollUp() {
-  const [isMounted, setIsMounted] = useState(false);
   const rollUpHandler = () => {};
   const ref = useRef<HTMLDivElement | null>(null);
+  const [hero, setHero] = useState<HTMLElement | null>(null);
 
   useEffect(() => {
-    setIsMounted(true);
+    setHero(document.getElementById("hero"));
   }, []);
 
   useIntersectionObserver(
-    document.getElementById("hero"),
+    hero,
     (entries) => {
       const [entry] = entries;
       ref.current?.classList.toggle("opacity-0", entry.isIntersecting);
@@ -23,8 +23,6 @@ export default function ScrollUp() {
       threshold: 0.8,
     },
   );
-
-  if (!isMounted) return;
 
   return (
     <div

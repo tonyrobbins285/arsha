@@ -1,3 +1,5 @@
+"use client";
+
 import React from "react";
 import { Container } from "./ui/container";
 import {
@@ -11,7 +13,7 @@ import {
 
 export default function AboutUs() {
   return (
-    <section>
+    <section id="about-us">
       <Container className="py-16">
         <h2 className="text-center text-3xl font-bold uppercase tracking-wide text-sky-700">
           About Us

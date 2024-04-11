@@ -6,7 +6,7 @@ import useEmblaCarousel, {
 } from "embla-carousel-react";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import { EmblaCarouselType } from "embla-carousel";
-
+import Autoplay from "embla-carousel-autoplay";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { useCallback } from "react";
@@ -60,12 +60,21 @@ const Carousel = React.forwardRef<
     },
     ref,
   ) => {
+    const [aboutUs, setAboutUs] = React.useState<HTMLElement | null>(null);
     const [carouselRef, api] = useEmblaCarousel(
       {
         ...opts,
         axis: orientation === "horizontal" ? "x" : "y",
+        loop: true,
       },
-      plugins,
+      [
+        Autoplay({
+          delay: 1000,
+          stopOnInteraction: false,
+          stopOnMouseEnter: true,
+          rootNode: () => aboutUs,
+        }),
+      ],
     );
     const [canScrollPrev, setCanScrollPrev] = React.useState(false);
     const [canScrollNext, setCanScrollNext] = React.useState(false);
@@ -74,7 +83,6 @@ const Carousel = React.forwardRef<
       if (!api) {
         return;
       }
-
       setCanScrollPrev(api.canScrollPrev());
       setCanScrollNext(api.canScrollNext());
     }, []);
@@ -99,6 +107,10 @@ const Carousel = React.forwardRef<
       },
       [scrollPrev, scrollNext],
     );
+
+    React.useEffect(() => {
+      setAboutUs(document.getElementById("about-us"));
+    }, []);
 
     React.useEffect(() => {
       if (!api || !setApi) {
@@ -197,8 +209,6 @@ const CarouselButton = React.forwardRef<
   }, []);
 
   const onSelect = React.useCallback((emblaApi: EmblaCarouselType) => {
-    console.log(emblaApi);
-    console.log(emblaApi.selectedScrollSnap());
     setSelectedIndex(emblaApi.selectedScrollSnap());
   }, []);
 
@@ -216,7 +226,7 @@ const CarouselButton = React.forwardRef<
           key={index}
           ref={ref}
           className={cn(
-            "h-2 w-2 rounded-full bg-slate-100",
+            "h-2 w-2 cursor-pointer rounded-full bg-slate-100",
             index === selectedIndex && "bg-slate-400",
             className,
           )}
