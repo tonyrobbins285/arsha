@@ -68,12 +68,12 @@ const Carousel = React.forwardRef<
         loop: true,
       },
       [
-        Autoplay({
-          delay: 1000,
-          stopOnInteraction: false,
-          stopOnMouseEnter: true,
-          rootNode: () => aboutUs,
-        }),
+        // Autoplay({
+        //   delay: 4000,
+        //   stopOnInteraction: false,
+        //   stopOnMouseEnter: true,
+        //   rootNode: () => aboutUs,
+        // }),
       ],
     );
     const [canScrollPrev, setCanScrollPrev] = React.useState(false);
@@ -220,14 +220,14 @@ const CarouselButton = React.forwardRef<
   }, [emblaApi, onInit, onSelect]);
 
   return (
-    <div className="absolute -bottom-3 left-[50%] flex -translate-x-[50%] items-center gap-4">
+    <div className="absolute left-[50%] top-[-10px] flex -translate-x-[50%] items-center gap-1">
       {scrollSnaps.map((_, index) => (
         <div
           key={index}
           ref={ref}
           className={cn(
-            "h-2 w-2 cursor-pointer rounded-full bg-slate-100",
-            index === selectedIndex && "bg-slate-400",
+            "h-[2px] w-10 cursor-pointer rounded-full bg-slate-100",
+            index === selectedIndex && "h-[4px] bg-sky-400",
             className,
           )}
           onClick={() => onDotButtonClick(index)}

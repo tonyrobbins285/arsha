@@ -5,7 +5,7 @@ export default function useIntersectionObserver(
   callback: IntersectionObserverCallback,
   options: IntersectionObserverInit = {
     root: null,
-    threshold: 0.1,
+    threshold: 0.2,
   },
 ) {
   useEffect(() => {

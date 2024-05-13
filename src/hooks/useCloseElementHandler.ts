@@ -1,8 +1,9 @@
-import { useMobileNavStore } from "@/store";
 import { useEffect } from "react";
 
-export default function useCloseElementHandler(element: HTMLElement | null) {
-  const close = useMobileNavStore((state) => state.close);
+export default function useCloseElementHandler(
+  element: HTMLElement | null,
+  close: () => void,
+) {
   useEffect(() => {
     if (element === null) return;
     const handleClickOutside = (e: MouseEvent) => {

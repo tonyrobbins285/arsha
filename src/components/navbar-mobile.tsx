@@ -17,7 +17,7 @@ export default function NavbarMobile() {
 
   const mainNavRoutes = generateMainNavRoutes(pathname);
 
-  useOutsideClickHandler(ref.current);
+  useOutsideClickHandler(ref.current, close);
 
   useEffect(() => {
     document.body.classList.toggle("overflow-hidden", isOpen);

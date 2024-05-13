@@ -27,11 +27,11 @@ export default function ScrollUp() {
   return (
     <div
       ref={ref}
-      className="fixed -right-[50%] bottom-8 transition-opacity duration-500 lg:right-[2rem]"
+      className="fixed bottom-8 right-9 z-50 transition-opacity duration-500 lg:right-[2rem]"
     >
       <button
         onClick={() => rollUpHandler()}
-        className="rounded-full bg-blue-300 p-3 transition-all duration-500 hover:scale-105 hover:bg-blue-400"
+        className="rounded-full bg-blue-300 bg-opacity-50 p-3 transition-all duration-500 hover:scale-105 hover:bg-blue-400"
       >
         <ArrowUp
           size={32}

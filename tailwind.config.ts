@@ -75,13 +75,44 @@ const config = {
           "100%": {
             transform: "translateY(-10px)",
           },
-          "fade-in": {},
+        },
+        "fade-up": {
+          "0%": {
+            translate: "0 150px",
+            opacity: "0",
+          },
+          "100%": {
+            translate: "0",
+            opacity: "100",
+          },
+        },
+        "zoom-in": {
+          "0%": {
+            scale: "0",
+            opacity: "0",
+          },
+          "100%": {
+            scale: "1",
+            opacity: "100",
+          },
+        },
+        "backdrop-fade": {
+          from: {
+            background: "transparent",
+          },
+          to: {
+            background: "rgba(0,0,0, .6)",
+          },
         },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
         "up-down": "up-down 2s ease-in infinite alternate-reverse both",
+        "fade-up": "fade-up 1s ease-in-out forwards",
+        "zoom-in": "zoom-in 1s ease-in-out forwards",
+        "backdrop-open": "backdrop-fade 1s ease forwards",
+        "backdrop-close": "backdrop-fade 1s ease reverse backwards",
       },
     },
   },

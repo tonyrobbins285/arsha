@@ -9,7 +9,7 @@ export default function Header() {
   return (
     <header className="fixed left-0 top-0 z-10 h-16 w-full bg-transparent">
       <HeaderBackground />
-      <Container className="relative z-40">
+      <Container className="relative z-40 py-0">
         <div className="flex h-full w-full items-center justify-between">
           <h1 className="text-3xl font-medium uppercase tracking-wider text-white">
             <Link href="/">Arsha</Link>

@@ -3,8 +3,15 @@
 import React, { useRef, useState } from "react";
 import Image from "next/image";
 import useIntersectionObserver from "@/hooks/useIntersectionObserver";
+import { cn } from "@/lib/utils";
 
-export default function HeroImage() {
+export default function SectionImage({
+  src,
+  animate = false,
+}: {
+  src: string;
+  animate?: boolean;
+}) {
   const [ref, setRef] = useState<HTMLDivElement | null>(null);
   const refDiv = useRef<HTMLDivElement | null>(null);
   useIntersectionObserver(
@@ -12,11 +19,12 @@ export default function HeroImage() {
     (entries, observer) => {
       const [entry] = entries;
       if (entry.isIntersecting) {
+        refDiv.current?.classList.add("animate-zoom-in");
         refDiv.current?.classList.remove("scale-0", "opacity-0");
         observer.unobserve(entry.target);
       }
     },
-    { threshold: 0.5 },
+    { threshold: 0.2 },
   );
 
   return (
@@ -26,12 +34,15 @@ export default function HeroImage() {
     >
       <div
         ref={refDiv}
-        className="relative h-[300px] w-full scale-0 opacity-0 transition-all duration-1000 ease-in lg:h-[450px]"
+        className="relative h-[300px] w-full scale-0 opacity-0 lg:h-[450px]"
       >
         <Image
-          alt="hero-img"
-          src="/img/hero-img.png"
-          className="animate-up-down object-contain object-center"
+          alt="img"
+          src={src}
+          className={cn(
+            "object-center, object-contain",
+            animate && "animate-up-down",
+          )}
           fill
           priority
           sizes="(min-width: 1360px) 640px, calc(47.12vw + 9px)"

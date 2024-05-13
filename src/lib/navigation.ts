@@ -16,9 +16,9 @@ export const generateMainNavRoutes = (pathname: string) => {
       active: pathname === "/services",
     },
     {
-      href: "/porfolio",
-      label: "Porfolio",
-      active: pathname === "/porfolio",
+      href: "/portfolio",
+      label: "Portfolio",
+      active: pathname === "/portfolio",
     },
     {
       href: "/team",
@@ -33,4 +33,4 @@ export const generateMainNavRoutes = (pathname: string) => {
   ];
 };
 
-// "Home", "About", "Services", "Porfolio", "Team", "Contact";
+// "Home", "About", "Services", "Portfolio", "Team", "Contact";

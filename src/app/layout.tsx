@@ -7,6 +7,7 @@ import Overlay from "@/components/overlay";
 import NavbarMobile from "@/components/navbar-mobile";
 import NavbarMobileBtn from "@/components/navbar-mobile-btn";
 import ScrollUp from "@/components/scroll-up";
+import FullpageImage from "@/components/fullpage-image";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -27,6 +28,7 @@ export default function RootLayout({
         {/* Mobile Navbar */}
         <NavbarMobile />
         {/* Scroll up  */}
+        <FullpageImage />
         <ScrollUp />
         <Header />
         {children}
